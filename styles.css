@@ -324,3 +324,30 @@ max-width: 100%;
 padding: 10px;
 box-sizing: border-box;
 }
+
+html, body {
+  overflow-x: hidden;
+}
+
+.banner-content {
+  max-width: 100%;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main-container {
+  padding-inline: 16px;
+}
+
+.segment-content {
+  width: 100%;
+  max-width: 100%;
+}
