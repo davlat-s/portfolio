@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SwiftUI Tutorial Recreation</title>
+<link href="styles.css" rel="stylesheet"/>
+
+<link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-swift.min.js"></script>
+</head>
+<body>
+<!-- Banner -->
+<header class="banner">
+<img alt="Banner background" class="banner-image" loading="lazy" src="banner.png"/>
+<div class="banner-content">
+<h1>
+<img alt="CreditCardLibrary App Icon" class="inline-app-icon" loading="lazy" src="app-icon.png"/>
+        Card Wallet
+      </h1>
+<p>This walkthrough takes you through CardWallet, a MacOS app built with SwiftUI to manage, visualize, and organize your credit cards—all in one sleek interface. Inspired by Notes and Wallet App</p>
+<div class="banner-meta">
+<span>Designed and Developed by Davlatjon S.</span>
+</div>
+<div class="banner-meta">
+<span>Xcode 15 or later</span>
+</div>
+</div>
+<img alt="CreditCardLibrary on MacBook" class="banner-macbook" loading="lazy" src="macbook.png"/>
+</header>
+<div class="main-container">
+<!-- Segment 1 -->
+<div class="segment">
+<div class="segment-header">
+<div class="segment-header-text">
+<h1>Explore Your Card Collection</h1>
+<p>Navigate and interact with your credit card library through an intuitive grid-based interface, complete with dynamic filtering and responsive design.</p>
+</div>
+<img alt="Grid view of credit cards" class="segment-image" loading="lazy" src="Grid View-2.png"/>
+</div>
+<div class="segment-content">
+<div class="left-column">
+<div class="text-segment" data-id="step1">
+<h2>Grid View</h2>
+<p>The card library is presented using a LazyVGrid, allowing the layout to adjust automatically as the window resizes. This provides a scalable way to display many cards while maintaining consistent spacing and responsiveness across different screen sizes.</p>
+<div class="visual inline-visual" data-id="step1">
+<video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+    <source src="Grid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>
+<pre><code class="swift language-swift">var body: some View {
+    ScrollView {
+        LazyVGrid(columns: columns, spacing: 5) {
+            ForEach(filteredCreditCards, id: \.id) { card in
+                CardCellView(creditCard: card)
+                    //...
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+</div>
+<div class="text-segment" data-id="step2">
+<h2>Search &amp; Sort</h2>
+<p>A .searchable modifier enables quick filtering of the card list by name. Sorting is handled through a Picker embedded in the toolbar menu, allowing users to reorder by open date, credit limit, or name. The setup keeps the UI simple while giving users control over how they view their data.</p>
+<div class="visual inline-visual" data-id="step2">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Search and Sort.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+<pre><code class="swift language-swift">.toolbar {
+    ToolbarItemGroup(placement: .automatic) {
+        Menu("Sort", systemImage: "arrow.up.arrow.down") {
+            Picker("Open Date", selection: $sortOrder) {
+                Text("Newest").tag([SortDescriptor(\CreditCard.openDate, order: .reverse)])
+                Text("Oldest").tag(//...)
+            }
+            
+            Picker("Credit Limit", selection: $sortOrder) {
+                Text("Highest").tag(//...)
+                Text("Lowest").tag(//...)
+            }
+            
+            Picker("Name", selection: $sortOrder) {
+                Text("A-Z").tag(//...)
+                Text("Z-A").tag(//...)
+            }
+        //...
+        }
+    }
+}
+</code></pre>
+</div>
+</div>
+<div class="text-segment" data-id="step3">
+<h2>Credit Card Categories</h2>
+<p>The sidebar uses an enum-based model to categorize cards as Personal, Business, Closed, or All. Filtering is handled using straightforward logic that checks card properties, allowing users to quickly switch contexts without additional filtering UI.</p>
+<div class="visual inline-visual" data-id="step3">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Credit Card Categories.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+<pre><code class="swift language-swift">enum SideBarCategories: Hashable {
+    case business
+    case personal
+    case all
+    case closed
+    case charts
+    //...
+    
+    func sidebarFilter(_ creditCard: CreditCard) -> Bool {
+        switch self {
+        case .all:
+            return creditCard.closed == nil
+        case .personal:
+            return !creditCard.isBusiness && creditCard.closed == nil
+        case .business:
+            return creditCard.isBusiness && creditCard.closed == nil
+        case .closed:
+            return creditCard.closed != nil
+        case .charts:
+            return false
+        }
+    }
+}
+</code></pre>
+</div>
+</div>
+</div>
+
+<!-- Horizontal Divider -->
+<hr class="segment-divider"/>
+<!-- Segment 2 -->
+<div class="segment">
+<div class="segment-header">
+<div class="segment-header-text">
+<h1>Dive Into Card Details</h1>
+<p>Access a detailed view of each credit card, showcasing key attributes and history in a structured layout, leveraging SwiftUI’s navigation and data binding.</p>
+</div>
+<img alt="Card detail view" class="segment-image" loading="lazy" src="Show History.png"/>
+</div>
+<div class="segment-content">
+<div class="left-column">
+<div class="text-segment" data-id="step5">
+<h2>Detail View</h2>
+<p>Double-clicking a card opens a custom DetailView, displaying a structured breakdown of each card’s properties, including its name, type, credit limit, and associated bank. Information is grouped visually using GroupBox and VStack to keep the layout organized and easy to scan. The view is scrollable and designed to scale with the amount of content.</p>
+<div class="visual inline-visual" data-id="step5">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Detail View.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <pre><code class="swift language-swift">var body: some View {
+    ScrollView(.vertical, showsIndicators: false) {
+        VStack {
+            CardImageView(creditCard: creditCard)
+                //...
+            GroupBox {
+                VStack{
+                    DetailRowView(label: "Card Name", value: creditCard.name)
+                    DetailRowView(label: "Type", value: creditCard.isBusiness ? "Business" : "Personal")
+                    //...
+                }
+            } label: {
+                Label("Card Details", systemImage: "creditcard")
+                    //...
+            }
+            //...
+        }
+    }
+    .navigationTitle("Credit Card Details")
+}
+</code></pre>
+</div>
+</div>
+<div class="text-segment" data-id="step6">
+<h2>Show History</h2>
+<p>The history section displays a chronological list of changes associated with a card. This includes modifications, promotions, and status updates, stored in a related SwiftData model. It gives users a clear record of how a card’s data has evolved over time.</p>
+<div class="visual inline-visual" data-id="step6">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="History View.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <pre><code class="swift language-swift">var body: some View {
+    VStack {
+        HStack {
+            if creditCard.history.isEmpty {
+                Text("No history available")
+                    //...
+            } else {
+                List {
+                    ForEach(creditCard.history, id: \.self) { history in
+                        Text("\(history.date, style: .date)  \(history.entry)")
+                            //...
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+</div>
+</div>
+
+<!-- Horizontal Divider -->
+<hr class="segment-divider"/>
+<!-- Segment 3 -->
+<div class="segment">
+<div class="segment-header">
+<div class="segment-header-text">
+<h1>Add and Manage Cards</h1>
+<p>Streamline credit card management with forms for adding, editing, and deleting entries, designed with SwiftUI’s Form and SwiftData for persistent storage.</p>
+</div>
+<img alt="Card management form" class="segment-image" loading="lazy" src="Form.png"/>
+</div>
+<div class="segment-content">
+<div class="left-column">
+<div class="text-segment" data-id="step9">
+<h2>Adding, Editing, Deleting</h2>
+<p>Card management is handled via modals that open when adding or editing a card. The data is stored using SwiftData and updates are reflected in real time. Deletions prompt a confirmation alert, using SwiftUI’s native .alert and .sheet behaviors.</p>
+<div class="visual inline-visual" data-id="step9">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Add Edit Delete.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <pre><code class="swift language-swift">.toolbar {
+    ToolbarItemGroup(placement: .automatic) {
+        //...
+        Button(action: addCard) {//...}
+        
+        Button(action: toggleEditing) {//...}
+        
+        Button(action: deleteCard) {//...} 
+    }
+}
+.alert(item: $cardToDelete) { card in
+    Alert(title: Text("Delete Card"), message: Text("Are you sure you want to delete \(card.name)?"), 
+        primaryButton: .destructive(Text("Delete")) {
+            deleteCard(card)
+        },
+        secondaryButton: .cancel()
+    )
+}
+.sheet(isPresented: $isEditing) {
+    if let selectedCard = selectedCard {
+        FormEditView(creditCard: selectedCard)
+    }
+}
+.sheet(isPresented: $newCard) {
+    FormAddView()
+}
+</code></pre>
+</div>
+</div>
+<div class="text-segment" data-id="step10">
+<h2>Form Breakdown</h2>
+<p>The form includes fields for basic card details like name, credit limit, and bank. Toggles are used for business and charge card status. The layout is built with SwiftUI’s Form, using @Binding to connect user input directly to the model.</p>
+<div class="visual inline-visual" data-id="step10">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Form Breakdown.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+<pre><code class="swift language-swift">struct FormView: View {
+    //... 
+    @Binding var creditCard: CreditCard
+    @Binding var //...
+
+    var body: some View {
+        ScrollView {
+            Form {
+                Section("Card Details") {
+                    CustomTextField(title: "Card Name", text: $creditCard.name, width: .infinity, prompt: "Sapphire Reserve", borderColor: .accent)
+                    //...
+                }
+                
+                Section("Promotions") {
+                    //...
+                }
+
+                //...
+            }
+        }
+        //...
+    }
+}
+</code></pre>
+</div>
+</div>
+</div>
+<div class="right-column">
+<div class="visual column-visual" data-id="step9">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Add Edit Delete.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <pre><code class="swift language-swift">modelContext.insert(newCard)
+modelContext.delete(cardToRemove)</code></pre>
+</div>
+<div class="visual column-visual" data-id="step10">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Form Breakdown.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+<pre><code class="swift language-swift">Form {
+    Toggle("Is Business", isOn: $isBusiness)
+    Picker("Bank", selection: $selectedBank) {
+        ForEach(banks) { bank in Text(bank.name) }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<!-- Horizontal Divider -->
+<hr class="segment-divider"/>
+<!-- Segment 4 -->
+<div class="segment">
+<div class="segment-header">
+<div class="segment-header-text">
+<h1>Visualize Your Data</h1>
+<p>Transform raw credit card data into meaningful charts, providing insights into limits, age, and bank distribution, built with SwiftUI’s potential for custom visualizations.</p>
+</div>
+<img alt="Charts view" class="segment-image" loading="lazy" src="Charts View.png"/>
+</div>
+<div class="segment-content">
+<div class="left-column">
+<div class="text-segment" data-id="step13">
+<h2>Charts View</h2>
+<p>The Charts view summarizes credit card data visually, using bar and pie charts to show limit distribution, card age, and bank breakdowns. Charts are placed in a grid layout and backed by queries on the SwiftData model for live data access.</p>
+<div class="visual inline-visual" data-id="step13">
+    <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+        <source src="Charts.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <pre><code class="swift language-swift">struct ChartsContentView: View {
+    
+    @Query(sort: \CreditCard.openDate) private var cards: [CreditCard]
+    @Query(sort: \Bank.name) private var banks: [Bank]
+    //...
+
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: columns, spacing: 20) {
+                BarChartView {
+                    CreditLimitBreakdownChart(cards: cards)
+                }
+                BarChartView {
+                    CreditAgeChartView(cards: cards)
+                }
+                PieChartView {
+                    BankBreakdownChart(banks: banks)
+                }
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
