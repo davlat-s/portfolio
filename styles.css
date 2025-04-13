@@ -336,7 +336,11 @@ html, body {
     font-size: 20px;
   }
   .text-segment {
-    padding: 10px;
+  /* Reduce code font size for Prism code blocks on small screens */
+  pre[class*="language-"] code,
+  code[class*="language-"] {
+    font-size: 0.75em !important;
+    padding: 15px;
   }
 }
 .inline-visual {
