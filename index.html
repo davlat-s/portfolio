@@ -72,7 +72,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">var body: some View {
+              <pre><code class="swift language-swift">
+var body: some View {
     ScrollView {
         LazyVGrid(columns: columns, spacing: 5) {
             ForEach(filteredCreditCards, id: \.id) { card in
@@ -95,7 +96,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">.toolbar {
+              <pre><code class="swift language-swift">
+.toolbar {
     ToolbarItemGroup(placement: .automatic) {
         Menu("Sort", systemImage: "arrow.up.arrow.down") {
             Picker("Open Date", selection: $sortOrder) {
@@ -128,7 +130,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">enum SideBarCategories: Hashable {
+              <pre><code class="swift language-swift">
+enum SideBarCategories: Hashable {
     case business
     case personal
     case all
@@ -179,7 +182,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">var body: some View {
+              <pre><code class="swift language-swift">
+var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
         VStack {
             CardImageView(creditCard: creditCard)
@@ -212,7 +216,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">var body: some View {
+              <pre><code class="swift language-swift">
+var body: some View {
     VStack {
         HStack {
             if creditCard.history.isEmpty {
@@ -257,7 +262,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">.toolbar {
+              <pre><code class="swift language-swift">
+.toolbar {
     ToolbarItemGroup(placement: .automatic) {
         //...
         Button(action: addCard) {//...}
@@ -294,7 +300,8 @@
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">struct FormView: View {
+              <pre><code class="swift language-swift">
+struct FormView: View {
     //...
     @Binding var creditCard: CreditCard
     @Binding var //...
@@ -336,7 +343,8 @@ modelContext.delete(cardToRemove)</code></pre>
               </video>
               <div class="pause-overlay">| |</div>
             </div>
-            <pre><code class="swift language-swift">Form {
+            <pre><code class="swift language-swift">
+Form {
     Toggle("Is Business", isOn: $isBusiness)
     Picker("Bank", selection: $selectedBank) {
         ForEach(banks) { bank in Text(bank.name) }
@@ -369,7 +377,8 @@ modelContext.delete(cardToRemove)</code></pre>
                 </video>
                 <div class="pause-overlay">| |</div>
               </div>
-              <pre><code class="swift language-swift">struct ChartsContentView: View {
+              <pre><code class="swift language-swift">
+struct ChartsContentView: View {
     @Query(sort: \CreditCard.openDate) private var cards: [CreditCard]
     @Query(sort: \Bank.name) private var banks: [Bank]
     //...
@@ -388,7 +397,8 @@ modelContext.delete(cardToRemove)</code></pre>
             }
         }
     }
-}</code></pre>
+}
+</code></pre>
             </div>
           </div>
         </div>
