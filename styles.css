@@ -286,6 +286,14 @@ html, body {
     margin-top: 20px;
   }
   .main-container {
+    padding: 0 5px !important;
+    align-items: stretch;
+  }
+  .segment-content {
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+  .main-container {
     padding: 0 10px;
     align-items: stretch;
   }
@@ -328,13 +336,7 @@ html, body {
     font-size: 20px;
   }
   .text-segment {
-    padding: 15px;
-  }
-  
-  /* Reduce code font size for Prism code blocks on small screens */
-  pre[class*="language-"] code,
-  code[class*="language-"] {
-    font-size: 0.75em !important;
+    padding: 10px;
   }
 }
 .inline-visual {
