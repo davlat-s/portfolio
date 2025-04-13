@@ -367,3 +367,27 @@ html, body {
 #back-to-top:hover {
   background-color: #f39c12;
 }
+
+/* Additional styles for Pause Overlay */
+.video-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.pause-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  pointer-events: none;
+  display: none;
+}
+
+.video-wrapper.paused .pause-overlay {
+  display: block;
+}

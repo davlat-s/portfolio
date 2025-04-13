@@ -58,10 +58,14 @@
             <h2>Grid View</h2>
             <p>The card library is presented using a LazyVGrid, allowing the layout to adjust automatically as the window resizes. This provides a scalable way to display many cards while maintaining consistent spacing and responsiveness across different screen sizes.</p>
             <div class="visual inline-visual" data-id="step1">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Grid.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <!-- Modified: Wrap video in video-wrapper and add pause-overlay -->
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Grid.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">var body: some View {
     ScrollView {
         LazyVGrid(columns: columns, spacing: 5) {
@@ -78,10 +82,13 @@
             <h2>Search &amp; Sort</h2>
             <p>A .searchable modifier enables quick filtering of the card list by name. Sorting is handled through a Picker embedded in the toolbar menu, allowing users to reorder by open date, credit limit, or name. The setup keeps the UI simple while giving users control over how they view their data.</p>
             <div class="visual inline-visual" data-id="step2">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Search and Sort.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Search and Sort.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">.toolbar {
     ToolbarItemGroup(placement: .automatic) {
         Menu("Sort", systemImage: "arrow.up.arrow.down") {
@@ -108,10 +115,13 @@
             <h2>Credit Card Categories</h2>
             <p>The sidebar uses an enum-based model to categorize cards as Personal, Business, Closed, or All. Filtering is handled using straightforward logic that checks card properties, allowing users to quickly switch contexts without additional filtering UI.</p>
             <div class="visual inline-visual" data-id="step3">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Credit Card Categories.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Credit Card Categories.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">enum SideBarCategories: Hashable {
     case business
     case personal
@@ -156,10 +166,13 @@
             <h2>Detail View</h2>
             <p>Double-clicking a card opens a custom DetailView, displaying a structured breakdown of each card’s properties, including its name, type, credit limit, and associated bank. Information is grouped visually using GroupBox and VStack to keep the layout organized and easy to scan. The view is scrollable and designed to scale with the amount of content.</p>
             <div class="visual inline-visual" data-id="step5">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Detail View.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Detail View.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">var body: some View {
     ScrollView(.vertical, showsIndicators: false) {
         VStack {
@@ -186,10 +199,13 @@
             <h2>Show History</h2>
             <p>The history section displays a chronological list of changes associated with a card. This includes modifications, promotions, and status updates, stored in a related SwiftData model. It gives users a clear record of how a card’s data has evolved over time.</p>
             <div class="visual inline-visual" data-id="step6">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="History View.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="History View.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">var body: some View {
     VStack {
         HStack {
@@ -228,10 +244,13 @@
             <h2>Adding, Editing, Deleting</h2>
             <p>Card management is handled via modals that open when adding or editing a card. The data is stored using SwiftData and updates are reflected in real time. Deletions prompt a confirmation alert, using SwiftUI’s native .alert and .sheet behaviors.</p>
             <div class="visual inline-visual" data-id="step9">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Add Edit Delete.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Add Edit Delete.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">.toolbar {
     ToolbarItemGroup(placement: .automatic) {
         //...
@@ -262,10 +281,13 @@
             <h2>Form Breakdown</h2>
             <p>The form includes fields for basic card details like name, credit limit, and bank. Toggles are used for business and charge card status. The layout is built with SwiftUI’s Form, using @Binding to connect user input directly to the model.</p>
             <div class="visual inline-visual" data-id="step10">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Form Breakdown.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Form Breakdown.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">struct FormView: View {
     //...
     @Binding var creditCard: CreditCard
@@ -290,18 +312,24 @@
         </div>
         <div class="right-column">
           <div class="visual column-visual" data-id="step9">
-            <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-              <source src="Add Edit Delete.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                <source src="Add Edit Delete.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="pause-overlay">| |</div>
+            </div>
             <pre><code class="swift language-swift">modelContext.insert(newCard)
 modelContext.delete(cardToRemove)</code></pre>
           </div>
           <div class="visual column-visual" data-id="step10">
-            <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-              <source src="Form Breakdown.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                <source src="Form Breakdown.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="pause-overlay">| |</div>
+            </div>
             <pre><code class="swift language-swift">Form {
     Toggle("Is Business", isOn: $isBusiness)
     Picker("Bank", selection: $selectedBank) {
@@ -328,10 +356,13 @@ modelContext.delete(cardToRemove)</code></pre>
             <h2>Charts View</h2>
             <p>The Charts view summarizes credit card data visually, using bar and pie charts to show limit distribution, card age, and bank breakdowns. Charts are placed in a grid layout and backed by queries on the SwiftData model for live data access.</p>
             <div class="visual inline-visual" data-id="step13">
-              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
-                <source src="Charts.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Charts.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
               <pre><code class="swift language-swift">struct ChartsContentView: View {
     @Query(sort: \CreditCard.openDate) private var cards: [CreditCard]
     @Query(sort: \Bank.name) private var banks: [Bank]
