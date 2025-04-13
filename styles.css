@@ -251,6 +251,15 @@ html, body {
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 768px) {
+  .main-container {
+    padding: 0 5px !important;
+    margin: 0 !important;
+    align-items: stretch;
+  }
+  .segment-content {
+    max-width: 90vw;
+    margin: 0; /* This removes extra margins from the segment content */
+  }
   .banner {
     height: auto;
     flex-direction: column;
@@ -319,7 +328,7 @@ html, body {
     font-size: 20px;
   }
   .text-segment {
-    padding: 20px;
+    padding: 15px;
   }
   
   /* Reduce code font size for Prism code blocks on small screens */
