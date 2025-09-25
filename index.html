@@ -19,6 +19,7 @@
         <li><a href="#segment2">Dive Into Card Details</a></li>
         <li><a href="#segment3">Add and Manage Cards</a></li>
         <li><a href="#segment4">Visualize Your Data</a></li>
+        <li><a href="#segment5">Validate With UI Tests</a></li>
       </ul>
     </div>
   </nav>
@@ -396,6 +397,79 @@ struct ChartsContentView: View {
                 }
             }
         }
+    }
+}
+</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Segment 5 -->
+    <div class="segment" id="segment5">
+      <div class="segment-header">
+        <div class="segment-header-text">
+          <h1>Validate With UI Tests</h1>
+          <p>Demonstrate stability with an automated XCUITest suite that drives the same flows your users rely on, from creating a card to drilling into its detail view.</p>
+        </div>
+        <img alt="Toolbar interactions covered by UI tests" class="segment-image" loading="lazy" src="UI Tests.png" />
+      </div>
+      <div class="segment-content">
+        <div class="left-column">
+          <div class="text-segment" data-id="step14">
+            <h2>Component-Driven Automation</h2>
+            <p>Each surface of the app gets its own screen object—Grid, Toolbar, Detail, Form—so UI tests are authored with the same mental model as the product tour. These components stitch together to express full journeys while keeping the intent readable and reusable across scenarios.</p>
+            <div class="visual inline-visual" data-id="step14">
+              <pre><code class="swift language-swift">
+struct CardGrid {
+    private enum ID {
+        static func cardCell(_ uuid: String) -> String { "CardCell_\(uuid)" }
+    }
+
+    let app: XCUIApplication
+
+    func cardCell(_ uuid: String) -> XCUIElement {
+        app.descendants(matching: .any)
+            .matching(identifier: ID.cardCell(uuid))
+            .firstMatch
+    }
+
+    func assertCardName(_ name: String, file: StaticString = #file, line: UInt = #line) {
+        let predicate = NSPredicate(format: "label == %@", name)
+        let element = app.descendants(matching: .any)
+            .matching(predicate)
+            .firstMatch
+        XCTAssertTrue(element.waitForExistence(timeout: 5), "Card named \(name) should be visible", file: file, line: line)
+    }
+}
+</code></pre>
+            </div>
+          </div>
+          <div class="text-segment" data-id="step15">
+            <h2>Accessibility-First Selectors</h2>
+            <p>Selectors live beside the screen logic and map directly to accessibility identifiers baked into SwiftUI views. Wrappers guard that controls appear and are enabled before interacting, which catches regressions like missing buttons or disabled toolbar actions as soon as they ship.</p>
+            <div class="visual inline-visual" data-id="step15">
+              <pre><code class="swift language-swift">
+struct Toolbar {
+    private enum ID {
+        static let plusButton = "plusButton"
+        static let editCardButton = "editCardButton"
+        static let deleteCardButton = "deleteCardButton"
+    }
+
+    let app: XCUIApplication
+
+    var plusButton: XCUIElement {
+        app.buttons.matching(identifier: ID.plusButton).firstMatch
+    }
+
+    func tapPlusButton(file: StaticString = #file, line: UInt = #line) {
+        let button = plusButton
+        XCTAssertTrue(button.waitForExistence(timeout: 5), "Plus button should exist", file: file, line: line)
+        XCTAssertTrue(button.isEnabled, "Plus button should be enabled", file: file, line: line)
+        button.tap()
     }
 }
 </code></pre>
