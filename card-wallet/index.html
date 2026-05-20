@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Card Wallet — macOS App</title>
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- Back to portfolio -->
+  <a href="/" class="back-link">← Portfolio</a>
+
+  <!-- Banner -->
+  <header class="banner">
+    <img alt="Banner background" class="banner-image" loading="lazy" src="banner.png" />
+    <div class="banner-content">
+      <h1>
+        <img alt="CreditCardLibrary App Icon" class="inline-app-icon" loading="lazy" src="app-icon.png" />
+        Card Wallet
+      </h1>
+      <p>Card Wallet is a macOS app built with SwiftUI for managing, visualizing, and organizing your credit cards.</p>
+<div class="banner-meta">
+        <span>Xcode 15 or later</span>
+      </div>
+      <!-- Added GitHub Link -->
+      <div class="banner-meta">
+        <a href="https://github.com/davlat-s/CreditCardWallet" target="_blank" rel="noopener noreferrer">
+          View Project on GitHub
+        </a>
+      </div>
+    </div>
+    <img alt="CreditCardLibrary on MacBook" class="banner-macbook" loading="lazy" src="macbook.png" />
+  </header>
+
+  <div class="main-container">
+    <!-- Segment 1 -->
+    <div class="segment" id="segment1">
+      <div class="segment-header">
+        <div class="segment-header-text">
+          <h1>Explore Your Card Collection</h1>
+          <p>Browse your card library in a grid that reflows as the window resizes, with search and sort built in.</p>
+        </div>
+        <img alt="Grid view of credit cards" class="segment-image" loading="lazy" src="Grid View-2.png" />
+      </div>
+      <div class="segment-content">
+        <div class="left-column">
+          <div class="text-segment" data-id="step1">
+            <h2>Grid View</h2>
+            <p>The card library uses a LazyVGrid that reflows automatically as the window resizes, keeping spacing consistent at any size.</p>
+            <div class="visual inline-visual" data-id="step1">
+              <!-- Modified: Wrap video in video-wrapper and add pause-overlay -->
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Grid.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+          <div class="text-segment" data-id="step2">
+            <h2>Search &amp; Sort</h2>
+            <p>A .searchable modifier filters cards by name. Sorting is handled through a Picker in the toolbar menu: open date, credit limit, or name.</p>
+            <div class="visual inline-visual" data-id="step2">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Search and Sort.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+          <div class="text-segment" data-id="step3">
+            <h2>Credit Card Categories</h2>
+            <p>The sidebar uses an enum to categorize cards as Personal, Business, Closed, or All, with filter logic that checks card properties directly.</p>
+            <div class="visual inline-visual" data-id="step3">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Credit Card Categories.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segment 2 -->
+    <div class="segment" id="segment2">
+      <div class="segment-header">
+        <div class="segment-header-text">
+          <h1>Dive Into Card Details</h1>
+          <p>Each card has a detail view showing its properties and history, with SwiftUI navigation and data binding keeping everything in sync.</p>
+        </div>
+        <img alt="Card detail view" class="segment-image" loading="lazy" src="Detail View.png" />
+      </div>
+      <div class="segment-content">
+        <div class="left-column">
+          <div class="text-segment" data-id="step5">
+            <h2>Detail View</h2>
+            <p>Double-clicking a card opens a DetailView showing its name, type, credit limit, and associated bank. Properties are grouped with GroupBox and VStack. The view scrolls and handles any amount of content.</p>
+            <div class="visual inline-visual" data-id="step5">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Detail View.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+          <div class="text-segment" data-id="step6">
+            <h2>Show History</h2>
+            <p>The history section shows a chronological list of changes for each card, including modifications, promotions, and status updates, stored in a related SwiftData model.</p>
+            <div class="visual inline-visual" data-id="step6">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="History View.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segment 3 -->
+    <div class="segment" id="segment3">
+      <div class="segment-header">
+        <div class="segment-header-text">
+          <h1>Add and Manage Cards</h1>
+          <p>Add, edit, and delete cards through modals built with SwiftUI’s Form component, backed by SwiftData for persistent storage.</p>
+        </div>
+        <img alt="Card management form" class="segment-image" loading="lazy" src="Form.png" />
+      </div>
+      <div class="segment-content">
+        <div class="left-column">
+          <div class="text-segment" data-id="step9">
+            <h2>Adding, Editing, Deleting</h2>
+            <p>Card management is handled via modals that open when adding or editing a card. The data is stored using SwiftData and updates are reflected in real time. Deletions prompt a confirmation alert, using SwiftUI’s native .alert and .sheet behaviors.</p>
+            <div class="visual inline-visual" data-id="step9">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Add Edit Delete.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+          <div class="text-segment" data-id="step10">
+            <h2>Form Breakdown</h2>
+            <p>The form includes fields for basic card details like name, credit limit, and bank. Toggles are used for business and charge card status. The layout is built with SwiftUI’s Form, using @Binding to connect user input directly to the model.</p>
+            <div class="visual inline-visual" data-id="step10">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Form Breakdown.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="visual column-visual" data-id="step9">
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                <source src="Add Edit Delete.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="pause-overlay">| |</div>
+            </div>
+            <pre><code class="swift language-swift">modelContext.insert(newCard)
+modelContext.delete(cardToRemove)</code></pre>
+          </div>
+          <div class="visual column-visual" data-id="step10">
+            <div class="video-wrapper">
+              <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                <source src="Form Breakdown.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <div class="pause-overlay">| |</div>
+            </div>
+            <pre><code class="swift language-swift">
+Form {
+    Toggle("Is Business", isOn: $isBusiness)
+    Picker("Bank", selection: $selectedBank) {
+        ForEach(banks) { bank in Text(bank.name) }
+    }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Segment 4 -->
+    <div class="segment" id="segment4">
+      <div class="segment-header">
+        <div class="segment-header-text">
+          <h1>Visualize Your Data</h1>
+          <p>Bar and pie charts break down credit limits, card age, and bank distribution, built with the Swift Charts framework.</p>
+        </div>
+        <img alt="Charts view" class="segment-image" loading="lazy" src="Charts View.png" />
+      </div>
+      <div class="segment-content">
+        <div class="left-column">
+          <div class="text-segment" data-id="step13">
+            <h2>Charts View</h2>
+            <p>The Charts view uses bar and pie charts to show limit distribution, card age, and bank breakdown. Charts are arranged in a grid and pull directly from SwiftData queries.</p>
+            <div class="visual inline-visual" data-id="step13">
+              <div class="video-wrapper">
+                <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
+                  <source src="Charts.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="pause-overlay">| |</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Segment 5 -->
+    <div class="segment" id="segment5">
+      <div class="segment-header">
+        <div class="segment-header-text">
+          <h1>Validate With UI Tests</h1>
+          <p>An automated XCUITest suite covers the main user flows end to end.</p>
+        </div>
+        <img alt="Toolbar interactions covered by UI tests" class="segment-image" loading="lazy" src="UI Tests.png" />
+      </div>
+      <div class="segment-content">
+        <div class="left-column">
+          <div class="text-segment" data-id="step14">
+            <h2>Component-Driven Automation</h2>
+            <p>Each part of the app has its own screen object (Grid, Toolbar, Detail, Form) matching how the app is structured. These compose into full user flows while keeping tests readable and reusable.</p>
+            <div class="visual inline-visual" data-id="step14">
+            </div>
+          </div>
+          <div class="text-segment" data-id="step15">
+            <h2>Accessibility-First Selectors</h2>
+            <p>Selectors map directly to accessibility identifiers set in SwiftUI views. Each interaction wrapper checks that a control exists and is enabled before tapping, catching regressions like missing buttons or disabled actions early.</p>
+            <div class="visual inline-visual" data-id="step15">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Back to Top">↑ Back to Top</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

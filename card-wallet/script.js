@@ -1,0 +1,75 @@
+
+/* Intersection Observer for text segments and visuals */
+const textSegments = document.querySelectorAll('.text-segment');
+const visuals = document.querySelectorAll('.column-visual');
+
+function clearActiveStates() {
+  textSegments.forEach(seg => seg.classList.remove('active'));
+  visuals.forEach(vis => vis.classList.remove('active'));
+}
+
+function handleIntersect(entries) {
+  let visibleSegment = null;
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      visibleSegment = entry.target;
+      break;
+    }
+  }
+  if (visibleSegment) {
+    const activeId = visibleSegment.dataset.id;
+    clearActiveStates();
+    visibleSegment.classList.add('active');
+    const matchingVisual = document.querySelector(`.column-visual[data-id="${activeId}"]`);
+    if (matchingVisual) {
+      matchingVisual.classList.add('active');
+    }
+  }
+}
+
+const observerOptions = {
+  root: null,
+  rootMargin: '-100px 0px -80% 0px',
+  threshold: 0
+};
+
+const observer = new IntersectionObserver(handleIntersect, observerOptions);
+textSegments.forEach(segment => observer.observe(segment));
+
+/* Pause/Play Videos on Tap with Pause Overlay */
+document.querySelectorAll('.video-wrapper video').forEach(video => {
+  video.addEventListener('click', () => {
+    const wrapper = video.closest('.video-wrapper');
+    if (video.paused) {
+      video.play();
+      wrapper.classList.remove('paused');
+    } else {
+      video.pause();
+      wrapper.classList.add('paused');
+    }
+  });
+
+  video.addEventListener('pause', () => {
+    const wrapper = video.closest('.video-wrapper');
+    wrapper.classList.add('paused');
+  });
+
+  video.addEventListener('play', () => {
+    const wrapper = video.closest('.video-wrapper');
+    wrapper.classList.remove('paused');
+  });
+});
+
+/* Back-to-Top Button Functionality */
+const backToTopBtn = document.getElementById('back-to-top');
+if (backToTopBtn) {
+  window.addEventListener('scroll', () => {
+    backToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
