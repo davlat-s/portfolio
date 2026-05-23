@@ -4,11 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/portfolio/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Davlat S.</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-BNTzoRQT.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-Be9PWh-g.css">
+    <title>Davlat Sirojitdinov</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JM98C7D1Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7JM98C7D1Z');
+    </script>
+    <script type="module" crossorigin src="/portfolio/assets/main-BcTBalbP.js"></script>
+    <link rel="modulepreload" crossorigin href="/portfolio/assets/DotGrid-Cin7FeA0.js">
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/DotGrid-BZt9G8rz.css">
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/main-x1XGuNl0.css">
   </head>
-  <body>
+  <body style="background:#0a0a0a;margin:0">
     <div id="root"></div>
+    <script>
+      // Prevent browser-level pinch zoom on iOS Safari (ignores user-scalable=no since iOS 10)
+      document.addEventListener('gesturestart',  function(e){ e.preventDefault() }, { passive: false })
+      document.addEventListener('gesturechange', function(e){ e.preventDefault() }, { passive: false })
+      document.addEventListener('gestureend',    function(e){ e.preventDefault() }, { passive: false })
+      // Prevent ctrl+wheel zoom on desktop (trackpad pinch)
+      document.addEventListener('wheel', function(e){ if(e.ctrlKey) e.preventDefault() }, { passive: false })
+    </script>
   </body>
 </html>
