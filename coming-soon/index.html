@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Coming Soon</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JM98C7D1Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7JM98C7D1Z');
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -68,5 +76,11 @@
     <p>This page is under construction.</p>
   </div>
   <a href="/portfolio/">← Portfolio</a>
+  <script>
+    document.addEventListener('gesturestart',  function(e){ e.preventDefault() }, { passive: false })
+    document.addEventListener('gesturechange', function(e){ e.preventDefault() }, { passive: false })
+    document.addEventListener('gestureend',    function(e){ e.preventDefault() }, { passive: false })
+    document.addEventListener('wheel', function(e){ if(e.ctrlKey) e.preventDefault() }, { passive: false })
+  </script>
 </body>
 </html>

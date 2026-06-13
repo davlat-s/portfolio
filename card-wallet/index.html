@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
   <title>Card Wallet — macOS App</title>
   <link href="styles.css" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JM98C7D1Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7JM98C7D1Z');
+  </script>
 </head>
 <body>
   <!-- Back to portfolio -->
-  <a href="/portfolio/" class="back-link">← Portfolio</a>
+  <a href="/portfolio/" class="back-link">← Davlat Sirojitdinov</a>
 
   <!-- Banner -->
   <header class="banner">
@@ -48,13 +56,12 @@
             <h2>Grid View</h2>
             <p>The card library uses a LazyVGrid that reflows automatically as the window resizes, keeping spacing consistent at any size.</p>
             <div class="visual inline-visual" data-id="step1">
-              <!-- Modified: Wrap video in video-wrapper and add pause-overlay -->
               <div class="video-wrapper">
                 <video autoplay loop muted playsinline width="100%" poster="preview.jpg">
                   <source src="Grid.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -67,7 +74,7 @@
                   <source src="Search and Sort.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -80,7 +87,7 @@
                   <source src="Credit Card Categories.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -108,7 +115,7 @@
                   <source src="Detail View.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -121,7 +128,7 @@
                   <source src="History View.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -149,7 +156,7 @@
                   <source src="Add Edit Delete.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -162,7 +169,7 @@
                   <source src="Form Breakdown.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
@@ -174,7 +181,7 @@
                 <source src="Add Edit Delete.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <div class="pause-overlay">| |</div>
+
             </div>
             <pre><code class="swift language-swift">modelContext.insert(newCard)
 modelContext.delete(cardToRemove)</code></pre>
@@ -185,7 +192,7 @@ modelContext.delete(cardToRemove)</code></pre>
                 <source src="Form Breakdown.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <div class="pause-overlay">| |</div>
+
             </div>
             <pre><code class="swift language-swift">
 Form {
@@ -219,15 +226,13 @@ Form {
                   <source src="Charts.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                <div class="pause-overlay">| |</div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
     <!-- Segment 5 -->
     <div class="segment" id="segment5">
       <div class="segment-header">
@@ -260,5 +265,11 @@ Form {
   <button id="back-to-top" title="Back to Top">↑ Back to Top</button>
 
   <script src="script.js"></script>
+  <script>
+    document.addEventListener('gesturestart',  function(e){ e.preventDefault() }, { passive: false })
+    document.addEventListener('gesturechange', function(e){ e.preventDefault() }, { passive: false })
+    document.addEventListener('gestureend',    function(e){ e.preventDefault() }, { passive: false })
+    document.addEventListener('wheel', function(e){ if(e.ctrlKey) e.preventDefault() }, { passive: false })
+  </script>
 </body>
 </html>

@@ -36,29 +36,6 @@ const observerOptions = {
 const observer = new IntersectionObserver(handleIntersect, observerOptions);
 textSegments.forEach(segment => observer.observe(segment));
 
-/* Pause/Play Videos on Tap with Pause Overlay */
-document.querySelectorAll('.video-wrapper video').forEach(video => {
-  video.addEventListener('click', () => {
-    const wrapper = video.closest('.video-wrapper');
-    if (video.paused) {
-      video.play();
-      wrapper.classList.remove('paused');
-    } else {
-      video.pause();
-      wrapper.classList.add('paused');
-    }
-  });
-
-  video.addEventListener('pause', () => {
-    const wrapper = video.closest('.video-wrapper');
-    wrapper.classList.add('paused');
-  });
-
-  video.addEventListener('play', () => {
-    const wrapper = video.closest('.video-wrapper');
-    wrapper.classList.remove('paused');
-  });
-});
 
 /* Back-to-Top Button Functionality */
 const backToTopBtn = document.getElementById('back-to-top');
